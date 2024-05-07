@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import Details from "./Details";
+import DetailsErrorBoundary from "./Details";
 import SearchParams from "./SearchParams";
 
 const queryClient = new QueryClient({
@@ -21,7 +21,7 @@ const App = () => {
           <Link to="/">Adopt Me!</Link>
         </header>
         <Routes>
-          <Route path="/details/:id" element={<Details />} />
+          <Route path="/details/:id" element={<DetailsErrorBoundary />} />
           <Route path="/" element={<SearchParams />} />
         </Routes>
       </QueryClientProvider>
