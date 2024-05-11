@@ -4,7 +4,7 @@
   "description": "Complete Intro to React v8 project",
   "main": "index.js",
   "type": "module",
-  "scripts": {
+    "scripts": {
     "dev": "vite",
     "build:client": "vite build --outDir ../dist/client",
     "build:server": "vite build --outDir ../dist/server --ssr ServerApp.jsx",
