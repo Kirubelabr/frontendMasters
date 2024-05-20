@@ -1,8 +1,14 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
+import { Animal } from "./APIResponsesTypes";
 
-const localCache = {};
+type localCacheType = {
+  [key: string]: [];
+};
 
-export default function useBreedList(animal) {
+const localCache: localCacheType = {};
+
+export default function useBreedList(animal: Animal) {
   const [breedList, setBreedList] = useState([]);
   const [status, setStatus] = useState("unloaded");
 

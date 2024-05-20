@@ -8,10 +8,16 @@ import Modal from "./Modal";
 import fetchPet from "./fetchPet";
 
 const Details = () => {
+  const { id } = useParams();
+
+  if (!id) {
+    throw new Error("No pet ID provided");
+  }
+
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
-  const { id } = useParams();
   const results = useQuery(["details", id], fetchPet);
 
   if (results.isLoading) {
@@ -22,7 +28,12 @@ const Details = () => {
     );
   }
 
-  const pet = results.data.pets[0];
+  const pet = results?.data?.pets[0];
+
+  if (!pet) {
+    throw new Error("No pet found");
+  }
+
   return (
     <div className="details">
       <Carousel images={pet.images} />

@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense, lazy, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { Pet } from "./APIResponsesTypes";
 import AdoptedPetContext from "./AdoptedPetContext";
 
 const Details = lazy(() => import("./Details"));
@@ -16,7 +17,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const adoptedPet = useState(null);
+  const adoptedPet = useState(null as Pet | null);
   return (
     <div
       className="m-0 p-0"
